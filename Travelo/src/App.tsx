@@ -21,17 +21,17 @@
   import DriverTable from "./pages/Community/DriverTables";
   import Transaction from "./pages/Payment/TransactionHistory";
   import "react-datepicker/dist/react-datepicker.css";
-  import ContentManagement from "./pages/ContentManagemen/ContentManagement";
+  import ContentManagement from "./pages/ContentManagement/ContentManagement";
   import HelpAndSupport from "./pages/HelpAndSupport/HelpAndSupport";
   import DriverProfiles from "./pages/Community/DriverProfile";
   import RideHistoryPage from "./pages/RideHistoryPage";
   import UserProfiles from "./pages/Community/UserProfile";
   import UserRideHistoryPage from "./pages/UserRideHistoryPage";
   import FareManagement from "./pages/FareManagement/FareManagementPage";
-  import RoleManagementPage from "./pages/RoleManagement.tsx/RoleManagementPage";
-  import CreateRolePage from "./pages/RoleManagement.tsx/CreateRolePage";
-  import AdminProfiles from "./pages/RoleManagement.tsx/AdminProfilePage";
-  import EditRolePage from "./pages/RoleManagement.tsx/EditRolePage";
+  import RoleManagementPage from "./pages/RoleManagement/RoleManagementPage";
+  import CreateRolePage from "./pages/RoleManagement/CreateRolePage";
+  import AdminProfiles from "./pages/RoleManagement/AdminProfilePage";
+  import EditRolePage from "./pages/RoleManagement/EditRolePage";
 import ProtectedRoute from "./components/common/ProtectedRoute";
 
 
