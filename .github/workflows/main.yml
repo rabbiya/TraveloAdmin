@@ -37,7 +37,7 @@ jobs:
       - name: Set environment vars
         run: |
           echo "S3_BUCKET=travelo-fe-bucket" >> $GITHUB_ENV
-          echo "CF_DIST_ID=E2OT941MRDL1BBl" >> $GITHUB_ENV
+          echo "CF_DIST_ID=E2OT941MRDL1BB" >> $GITHUB_ENV
 
       - name: Install Node dependencies
         working-directory: Travelo
@@ -60,4 +60,4 @@ jobs:
       - name: Invalidate CloudFront cache
         run: |
           echo "Invalidating CloudFront"
-          aws cloudfront create-invalidation --distribution-id E2OT941MRDL1BBl --paths "/*"
+          aws cloudfront create-invalidation --distribution-id E2OT941MRDL1BB --paths "/*"
