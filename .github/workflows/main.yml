@@ -1,4 +1,4 @@
-name: Build and Deploy (DEV Only)
+name: Build and Deploy
 
 on:
   push:
@@ -11,9 +11,10 @@ jobs:
     container:
       image: node:22
       options: --memory=4096m
+
     env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_ACCESS_KEY_ID: YOUR_AWS_ACCESS_KEY_HERE
+      AWS_SECRET_ACCESS_KEY: YOUR_AWS_SECRET_KEY_HERE
       AWS_DEFAULT_REGION: us-east-1
 
     steps:
@@ -32,32 +33,24 @@ jobs:
       - name: Set DEV environment vars
         run: |
           echo "Using DEV environment"
-          echo "S3_BUCKET=happyhour-dev-bucket" >> $GITHUB_ENV
-          echo "CF_DIST_ID=E1UBYQQZBOFPK4" >> $GITHUB_ENV
-          echo "ENVIRONMENT=dev" >> $GITHUB_ENV
-          echo "S3_ENV_PATH=s3://happyhour-env-bucket/fe-dev-env/env" >> $GITHUB_ENV
-
-      - name: Download environment file from S3
-        run: |
-          aws s3 cp ${{ env.S3_ENV_PATH }} .
-          mv env .env
-
-      - name: Remove package-lock.json and node_modules and dist
-        run: |
-          rm -f package-lock.json
-          rm -rf node_modules
-          rm -rf dist
+          echo "S3_BUCKET=travelo-fe-bucket" >> $GITHUB_ENV
+          echo "CF_DIST_ID=E2OT941MRDL1BBl" >> $GITHUB_ENV
 
       - name: Install Node dependencies
-        run: npm install
+        working-directory: Travelo
+        run: |
+          npm install
 
       - name: Build project
+        working-directory: Travelo
         run: npm run build
 
       - name: Verify files to deploy
+        working-directory: Travelo
         run: ls -la dist/
 
       - name: Upload to S3
+        working-directory: Travelo
         run: |
           echo "Uploading files to $S3_BUCKET"
           aws s3 cp dist/ s3://$S3_BUCKET/ --recursive
