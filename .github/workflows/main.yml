@@ -45,7 +45,7 @@ jobs:
 
       - name: Build project
         working-directory: Travelo
-        run: npm run dev
+        run: npm run build
 
       - name: Verify files to deploy
         working-directory: Travelo
